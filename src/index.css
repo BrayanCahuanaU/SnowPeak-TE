@@ -1,11 +1,9 @@
-/* ─── RESET ────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; -webkit-font-smoothing: antialiased; }
 img { display: block; max-width: 100%; }
 button { font-family: inherit; cursor: pointer; }
 input, select { font-family: inherit; outline: none; }
 
-/* ─── VARIABLES GLOBALES ───────────────────────────────────── */
 :root {
   --ice: #0ea5e9;
   --ice-dark: #0369a1;
