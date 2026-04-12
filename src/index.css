@@ -1,0 +1,18 @@
+/* ─── RESET ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
+input, select { font-family: inherit; outline: none; }
+
+/* ─── VARIABLES GLOBALES ───────────────────────────────────── */
+:root {
+  --ice: #0ea5e9;
+  --ice-dark: #0369a1;
+  --snow: #f0f9ff;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-900: #1e293b;
+}
