@@ -15,7 +15,7 @@ function Cart({ setPage }) {
     <div className="empty-cart">
       <div className="empty-icon">🎿</div>
       <h2 className="empty-title">¡Pedido confirmado!</h2>
-      <p className="empty-sub">Tu pedido ha sido registrado. Pronto recibirás un correo de confirmación.</p>
+      <p className="empty-sub">Tu pedido ha sido registrado.</p>
       <button
         onClick={() => { dispatch({ type: "CLEAR" }); setOrdered(false); setPage("catalog"); }}
         className="btn-primary">
