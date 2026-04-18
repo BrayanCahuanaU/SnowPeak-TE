@@ -1,9 +1,31 @@
+import { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import PRODUCTS, { CATEGORIES } from "../../data/products";
 import "./Home.css";
 
+const CATEGORIES = ["todos", "esquís", "botas", "cascos", "gafas", "ropa", "bastones", "guantes"];
+
 function Home({ setPage, setSelectedProduct }) {
-  const featured = PRODUCTS.slice(0, 4);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:3000/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching products:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Cargando productos...</div>;
+  }
+
+  const featured = products.slice(0, 4);
 
   return (
     <div>

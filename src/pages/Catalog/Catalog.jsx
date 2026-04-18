@@ -1,14 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import PRODUCTS, { CATEGORIES } from "../../data/products";
 import "./Catalog.css";
 
+const CATEGORIES = ["todos", "esquís", "botas", "cascos", "gafas", "ropa", "bastones", "guantes"];
+
 function Catalog({ setPage, setSelectedProduct }) {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("todos");
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("default");
 
-  let filtered = PRODUCTS.filter(p => {
+  useEffect(() => {
+    fetch('http://127.0.0.1:3000/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching products:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div className="catalog-wrap">Cargando productos...</div>;
+  }
+
+  let filtered = products.filter(p => {
     const matchCat = category === "todos" || p.category === category;
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
