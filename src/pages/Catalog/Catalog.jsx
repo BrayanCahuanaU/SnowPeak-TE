@@ -1,30 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { CATEGORIES } from "../../data/products";
+import PRODUCTS, { CATEGORIES } from "../../data/products";
 import "./Catalog.css";
 
 function Catalog({ setPage, setSelectedProduct }) {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [category, setCategory] = useState("todos");
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("default");
 
-  useEffect(() => {
-    fetch("http://localhost:8080/api/productos")
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError("No se pudo conectar con el servidor.");
-        setLoading(false);
-      });
-  }, []);
-
-  let filtered = products.filter(p => {
+  let filtered = PRODUCTS.filter(p => {
     const matchCat = category === "todos" || p.category === category;
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
@@ -68,23 +52,19 @@ function Catalog({ setPage, setSelectedProduct }) {
         ))}
       </div>
 
-      {loading && <div className="empty">Cargando productos...</div>}
-      {error && <div className="empty">{error}</div>}
-      {!loading && !error && filtered.length === 0 && (
-        <div className="empty">No se encontraron productos con esos filtros.</div>
-      )}
-      {!loading && !error && filtered.length > 0 && (
-        <div className="product-grid">
-          {filtered.map(p => (
-            <ProductCard
-              key={p.id}
-              product={p}
-              setPage={setPage}
-              setSelectedProduct={setSelectedProduct}
-            />
-          ))}
-        </div>
-      )}
+      {filtered.length === 0
+        ? <div className="empty">No se encontraron productos con esos filtros.</div>
+        : <div className="product-grid">
+            {filtered.map(p => (
+              <ProductCard
+                key={p.id}
+                product={p}
+                setPage={setPage}
+                setSelectedProduct={setSelectedProduct}
+              />
+            ))}
+          </div>
+      }
     </div>
   );
 }

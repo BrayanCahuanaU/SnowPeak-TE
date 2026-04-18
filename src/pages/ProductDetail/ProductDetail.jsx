@@ -23,10 +23,10 @@ function ProductDetail({ product, setPage }) {
       <div className="detail-grid">
         <div className="detail-img-wrap">
           <img
-            src={`http://localhost:8080/images/${product.image}`}
+            src={product.image}
             alt={product.name}
             className="detail-img"
-            onError={e => { e.target.src = "http://localhost:8080/images/esquis.jpg"; }}
+            onError={e => { e.target.src = "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&q=80"; }}
           />
         </div>
         <div className="detail-info">

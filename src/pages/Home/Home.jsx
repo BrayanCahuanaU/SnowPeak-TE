@@ -1,17 +1,9 @@
-import { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { CATEGORIES } from "../../data/products";
+import PRODUCTS, { CATEGORIES } from "../../data/products";
 import "./Home.css";
 
 function Home({ setPage, setSelectedProduct }) {
-  const [featured, setFeatured] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8080/api/productos")
-      .then(res => res.json())
-      .then(data => setFeatured(data.slice(0, 4)))
-      .catch(err => console.error("Error cargando productos:", err));
-  }, []);
+  const featured = PRODUCTS.slice(0, 4);
 
   return (
     <div>

@@ -18,10 +18,10 @@ function ProductCard({ product, setPage, setSelectedProduct }) {
     <div className="card" onClick={() => { setSelectedProduct(product); setPage("detail"); }}>
       <div className="card-img-wrap">
         <img
-          src={`http://localhost:8080/images/${product.image}`}
+          src={product.image}
           alt={product.name}
           className="card-img"
-          onError={e => { e.target.src = "http://localhost:8080/images/esquis.jpg"; }}
+          onError={e => { e.target.src = "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&q=80"; }}
         />
         <span className="category-badge">{product.category}</span>
       </div>
