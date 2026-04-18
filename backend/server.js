@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const filePath = path.join(__dirname, "data", "products.json");
+const filePath = path.join(__dirname, "..", "products.json");
 
 // Leer productos
 const readData = () => {
@@ -21,47 +21,30 @@ const writeData = (data) => {
 };
 
 // GET all
-app.get("/products", (req, res) => {
+app.get("/api/products", (req, res) => {
   res.json(readData());
 });
 
 // GET by id
-app.get("/products/:id", (req, res) => {
+app.get("/api/products/:id", (req, res) => {
   const products = readData();
   const product = products.find(p => p.id == req.params.id);
   res.json(product);
 });
 
 // POST
-app.post("/products", (req, res) => {
-  const products = readData();
-  const newProduct = {
-    id: Date.now(),
-    ...req.body
-  };
-  products.push(newProduct);
-  writeData(products);
-  res.json(newProduct);
+app.post("/api/products", (req, res) => {
+  res.status(403).json({ message: "Read-only API for demo" });
 });
 
 // PUT
-app.put("/products/:id", (req, res) => {
-  let products = readData();
-  products = products.map(p =>
-    p.id == req.params.id ? { ...p, ...req.body } : p
-  );
-  writeData(products);
-  res.json({ message: "updated" });
+app.put("/api/products/:id", (req, res) => {
+  res.status(403).json({ message: "Read-only API for demo" });
 });
 
 // DELETE
-app.delete("/products/:id", (req, res) => {
-  let products = readData();
-  products = products.filter(p => p.id != req.params.id);
-  writeData(products);
-  res.json({ message: "deleted" });
+app.delete("/api/products/:id", (req, res) => {
+  res.status(403).json({ message: "Read-only API for demo" });
 });
 
-app.listen(3000, () => {
-  console.log("API running on http://localhost:3000");
-});
+module.exports = app;
