@@ -1,15 +1,29 @@
+/* CONTENEDOR PRINCIPAL  */
+/* Limita el ancho máximo y centra el catálogo */
 .catalog-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+/* ENCABEZADO  */
 .catalog-header { margin-bottom: 1.5rem; }
+/* Título principal de la página */
 .page-title { font-size: 28px; font-weight: 800; color: var(--gray-900); margin-bottom: 4px; }
+/* Subtítulo con cantidad de productos encontrados */
 .page-subtitle { font-size: 14px; color: var(--gray-500); }
+
+/*  FILTROS */
+/* Fila con buscador y selector de ordenamiento */
 .filters-row { display: flex; gap: 12px; margin-bottom: 1rem; flex-wrap: wrap; }
+
+/* Campo de búsqueda por nombre */
 .search-input {
   flex: 1; min-width: 200px; padding: 10px 14px;
   border-radius: 10px; border: 1px solid var(--gray-200);
   font-size: 14px; background: #fff; color: var(--gray-900);
   transition: border-color 0.15s;
 }
+/* Resalta el borde al enfocar */
 .search-input:focus { border-color: var(--ice); }
+
+/* Selector de ordenamiento (precio, rating) */
 .select {
   padding: 10px 14px; border-radius: 10px;
   border: 1px solid var(--gray-200); font-size: 14px;
@@ -17,19 +31,34 @@
   transition: border-color 0.15s;
 }
 .select:focus { border-color: var(--ice); }
+
+/* PESTAÑAS DE CATEGORÍA  */
+/* Fila de botones para filtrar por categoría */
 .cat-tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+
+/* Botón de categoría inactivo */
 .cat-tab {
   background: #fff; border: 1px solid var(--gray-200);
   border-radius: 20px; padding: 6px 16px;
   font-size: 13px; font-weight: 500; color: var(--gray-500);
   transition: all 0.15s;
 }
+/* Hover: resalta en azul */
 .cat-tab:hover { border-color: var(--ice); color: var(--ice-dark); }
+/* Botón de categoría activa: fondo azul */
 .cat-tab-active { background: var(--ice); border-color: var(--ice); color: #fff; }
+
+/* GRILLA DE PRODUCTOS */
+/* Grid responsive con columnas automáticas */
 .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+
+/* Mensaje cuando no hay productos que coincidan con el filtro */
 .empty { text-align: center; color: var(--gray-500); padding: 4rem 0; font-size: 16px; }
 
+/*RESPONSIVE */
 @media (max-width: 768px) {
+  /* Columnas más pequeñas en móvil */
   .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  /* Filtros apilados verticalmente en móvil */
   .filters-row { flex-direction: column; }
 }
