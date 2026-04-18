@@ -215,12 +215,6 @@ npm start        # Producción
 
 Este proyecto es parte del curso F1-TE.
 
-## 🙏 Agradecimientos
-
-- React y Vite por las excelentes herramientas
-- Vercel por el despliegue simplificado
-- Comunidad open source
 
 ---
 
-Desarrollado con ❤️ para la comunidad de ski y snowboard.
