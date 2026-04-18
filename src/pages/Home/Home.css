@@ -1,53 +1,72 @@
-.hero {
-  position: relative; height: 520px;
-  background: linear-gradient(135deg, var(--ice-dark) 0%, #0c4a6e 50%, #1e293b 100%);
-  display: flex; align-items: center; overflow: hidden;
+/* BENEFICIOS */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
 }
-.hero-overlay {
-  position: absolute; inset: 0;
-  background-image: url('../../assets/images/ski-hero.jpg');
-  background-size: cover; background-position: center; opacity: 0.4;
-}
-.hero-content {
-  position: relative; max-width: 1200px;
-  margin: 0 auto; padding: 0 2rem; width: 100%;
-}
-.hero-eyebrow {
-  color: var(--ice); font-size: 13px; font-weight: 600;
-  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
-}
-.hero-title {
-  font-size: clamp(32px, 5vw, 56px); font-weight: 800;
-  color: #fff; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px;
-}
-.hero-sub {
-  font-size: 16px; color: rgba(255,255,255,0.75);
-  max-width: 520px; line-height: 1.6; margin-bottom: 32px;
-}
-.btn-primary {
-  display: inline-block; background: var(--ice);
-  color: #fff; border: none; border-radius: 10px;
-  padding: 14px 28px; font-size: 15px; font-weight: 600;
-  transition: background 0.15s;
-}
-.btn-primary:hover { background: var(--ice-dark); }
-.section { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
-.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
-.section-title { font-size: 22px; font-weight: 700; color: var(--gray-900); }
-.see-all { background: none; border: none; color: var(--ice); font-size: 14px; font-weight: 500; }
-.see-all:hover { text-decoration: underline; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-.category-section { background: var(--gray-100); padding: 3rem 2rem; }
-.cat-grid { display: flex; flex-wrap: wrap; gap: 10px; max-width: 1200px; margin: 0 auto; }
-.cat-chip {
-  background: #fff; border: 1px solid var(--gray-200);
-  border-radius: 20px; padding: 8px 20px;
-  font-size: 14px; font-weight: 500; color: var(--gray-900);
-  transition: all 0.15s;
-}
-.cat-chip:hover { border-color: var(--ice); color: var(--ice-dark); }
 
-@media (max-width: 768px) {
-  .hero { height: 420px; }
-  .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+.benefit {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.benefit:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.benefit h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--gray-900);
+}
+
+.benefit p {
+  font-size: 14px;
+  color: var(--gray-500);
+}
+
+/* PROMO */
+.promo {
+  margin: 3rem auto;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+.promo-content {
+  background: linear-gradient(135deg, var(--ice), var(--ice-dark));
+  border-radius: 16px;
+  padding: 40px;
+  color: #fff;
+  text-align: center;
+}
+
+.promo-content h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.promo-content p {
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--ice-dark);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  opacity: 0.9;
 }
