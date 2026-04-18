@@ -8,7 +8,9 @@ function Catalog({ setPage, setSelectedProduct }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("todos");
+  // Estado para el texto de búsqueda
   const [search, setSearch] = useState("");
+  // Estado para el criterio de ordenamiento
   const [sortBy, setSortBy] = useState("default");
 
   useEffect(() => {
@@ -34,12 +36,15 @@ function Catalog({ setPage, setSelectedProduct }) {
     return matchCat && matchSearch;
   });
 
+  // Ordena los productos según el criterio seleccionado
   if (sortBy === "price-asc") filtered = [...filtered].sort((a, b) => a.price - b.price);
   if (sortBy === "price-desc") filtered = [...filtered].sort((a, b) => b.price - a.price);
   if (sortBy === "rating") filtered = [...filtered].sort((a, b) => b.rating - a.rating);
 
   return (
     <div className="catalog-wrap">
+
+      {/* Encabezado con título y contador de resultados */}
       <div className="catalog-header">
         <h1 className="page-title">Catálogo</h1>
         <p className="page-subtitle">
@@ -47,6 +52,7 @@ function Catalog({ setPage, setSelectedProduct }) {
         </p>
       </div>
 
+      {/* Barra de búsqueda y selector de ordenamiento */}
       <div className="filters-row">
         <input
           type="text"
@@ -63,6 +69,7 @@ function Catalog({ setPage, setSelectedProduct }) {
         </select>
       </div>
 
+      {/* Pestañas de filtro por categoría */}
       <div className="cat-tabs">
         {CATEGORIES.map(c => (
           <button key={c} onClick={() => setCategory(c)}
@@ -72,6 +79,7 @@ function Catalog({ setPage, setSelectedProduct }) {
         ))}
       </div>
 
+      {/* Grilla de productos o mensaje vacío */}
       {filtered.length === 0
         ? <div className="empty">No se encontraron productos con esos filtros.</div>
         : <div className="product-grid">
